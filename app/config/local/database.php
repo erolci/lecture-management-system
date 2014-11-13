@@ -42,6 +42,14 @@ return array(
 			'schema'   => 'public',
 		),
 
+		'mongodb' => array(
+		    'driver'   => 'mongodb',
+		    'host'     => 'localhost',
+		    'port'     => 27017,
+		    'username' => 'homestead',
+		    'password' => 'secret',
+		    'database' => 'lms'
+		),
 	),
 
 );
