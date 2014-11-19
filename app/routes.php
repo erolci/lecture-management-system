@@ -11,4 +11,25 @@
 |
 */
 
-Route::get('/', 'DashboardController@dashboard');
+// auth
+Route::get('adminLogin', 'LoginController@adminLogin');
+Route::get('studentLogin', 'LoginController@studentLogin');
+Route::get('login', 'LoginController@login');
+Route::post('login', 'LoginController@doLogin');
+Route::get('logout', 'LoginController@logout');
+
+// admin group
+Route::group(['prefix' => 'admin', 'before' => 'auth.admin'], function()
+{
+    // index
+    Route::get('/', 'AdminController@index');
+
+    // lessons resource
+    Route::resource('lessons', 'LessonsController');
+});
+
+// student group
+Route::group(['prefix' => 'student', 'before' => 'auth.student'], function()
+{
+
+});

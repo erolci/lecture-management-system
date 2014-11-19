@@ -1,0 +1,30 @@
+{
+  "name": "LMS",
+  "version": "0.0.0",
+  "homepage": "https://github.com/sakirsensoy/lecture-management-system",
+  "authors": [
+    "Şakir Şensoy <sakirsensoy@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "flat-ui": "~2.2.1",
+    "jquery": "~2.1.0",
+    "jqueryui": "~1.11.0",
+    "bootstrap": "~3.2.0",
+    "bootstrap-switch": "latest",
+    "bootstrap-tagsinput": "~0.4.2",
+    "fontawesome": "latest",
+    "html5shiv": "~3.7.2",
+    "respond": "~1.4.2",
+    "select2": "~3.5.1",
+    "jquery-indicator": "~1.0.1"
+  }
+}

@@ -35,7 +35,7 @@ App::after(function($request, $response)
 
 Route::filter('auth', function()
 {
-	if (Auth::guest())
+	if (Auth::admin()->guest())
 	{
 		if (Request::ajax())
 		{
@@ -87,4 +87,24 @@ Route::filter('csrf', function()
 	{
 		throw new Illuminate\Session\TokenMismatchException;
 	}
+});
+
+/*
+|--------------------------------------------------------------------------
+| View Composers
+|--------------------------------------------------------------------------
+*/
+
+// Her bir view dosyası için inline js dosyası olup olmadığını kontrol eder
+// ve varsa otomatik olarak implement eder
+View::composer('*', function($view)
+{
+    $viewPathInfo = pathinfo($view->getPath());
+    $viewJSPath = $viewPathInfo['dirname'] . '/' . $viewPathInfo['filename'] . '.js';
+
+    if ( file_exists($viewJSPath) )
+    {
+        $viewData = "<script>\n" . file_get_contents($viewJSPath) . "</script>\n";
+        $view->with('inlineJS', $viewData);
+    }
 });
