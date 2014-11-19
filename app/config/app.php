@@ -124,7 +124,8 @@ return array(
 
 		'Jenssegers\Mongodb\MongodbServiceProvider',
 		'Jenssegers\Mongodb\Auth\ReminderServiceProvider',
-		'Ollieread\Multiauth\MultiauthServiceProvider'
+		'Ollieread\Multiauth\MultiauthServiceProvider',
+		'Way\Generators\GeneratorsServiceProvider'
 	),
 
 	/*

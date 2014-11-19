@@ -2,9 +2,10 @@
 
 class AdminController extends BaseController {
 
-	public function dashboard()
+	public function index()
 	{
-		User::where('name', 'John')->delete();
+		//view
+        return View::make('admin.index');
 	}
 
 }

@@ -21,7 +21,11 @@ Route::get('logout', 'LoginController@logout');
 // admin group
 Route::group(['prefix' => 'admin', 'before' => 'auth.admin'], function()
 {
+    // index
+    Route::get('/', 'AdminController@index');
 
+    // lessons resource
+    Route::resource('lessons', 'LessonsController');
 });
 
 // student group

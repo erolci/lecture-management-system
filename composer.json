@@ -9,6 +9,9 @@
 		"jenssegers/mongodb": "2.0.2",
 		"ollieread/multiauth": "dev-master"
 	},
+	"require-dev": {
+	    "way/generators": "~2.0"
+	},
 	"autoload": {
 		"classmap": [
 			"app/commands",
