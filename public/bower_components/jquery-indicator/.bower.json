@@ -1,0 +1,37 @@
+{
+  "name": "jquery-indicator",
+  "version": "1.0.3",
+  "homepage": "https://github.com/sakirsensoy/indicatorJS",
+  "authors": [
+    "Şakir Şensoy <sakirsensoy@gmail.com>"
+  ],
+  "description": "The library is a javascript loading indicator.",
+  "main": "indicator.js",
+  "keywords": [
+    "indicator",
+    "loading",
+    "loader",
+    "ajax",
+    "spinner"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": ">= 1.9.0"
+  },
+  "_release": "1.0.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.3",
+    "commit": "460ced5f8d1390e4c0e5afe9f6c328258b5c5d18"
+  },
+  "_source": "git://github.com/sakirsensoy/indicatorJS.git",
+  "_target": "~1.0.1",
+  "_originalSource": "jquery-indicator"
+}
