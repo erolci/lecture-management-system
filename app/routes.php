@@ -11,6 +11,18 @@
 |
 */
 
+Route::get('/', function() {
+
+    if ( Auth::admin()->check() || Auth::student()->check() )
+    {
+        return Redirect::to( Auth::admin()->check() ? 'admin' : 'student' );
+    }
+    else
+    {
+        return Redirect::to('login');
+    }
+});
+
 // auth
 Route::get('adminLogin', 'LoginController@adminLogin');
 Route::get('studentLogin', 'LoginController@studentLogin');
@@ -22,7 +34,10 @@ Route::get('logout', 'LoginController@logout');
 Route::group(['prefix' => 'admin', 'before' => 'auth.admin'], function()
 {
     // index
-    Route::get('/', 'AdminController@index');
+    Route::get('/', function() {
+
+        return Redirect::to('admin/lessons');
+    });
 
     // lessons resource
     Route::resource('lessons', 'LessonsController');
