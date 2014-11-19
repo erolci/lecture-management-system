@@ -1,6 +1,10 @@
 <?php
 
-class Lesson extends \Eloquent {
+use Jenssegers\Mongodb\Model as Eloquent;
+
+class Lesson extends Eloquent {
+
+    protected $collection = 'lessons_collection';
 
 	// Add your validation rules here
 	public static $rules = [

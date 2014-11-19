@@ -11,7 +11,7 @@ class LessonsController extends \BaseController {
 	{
 		$lessons = Lesson::all();
 
-		return View::make('lessons.index', compact('lessons'));
+		return View::make('admin.lessons.index', compact('lessons'));
 	}
 
 	/**
@@ -21,7 +21,7 @@ class LessonsController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('lessons.create');
+		return View::make('admin.lessons.create');
 	}
 
 	/**
@@ -40,7 +40,7 @@ class LessonsController extends \BaseController {
 
 		Lesson::create($data);
 
-		return Redirect::route('lessons.index');
+		return Redirect::to('admin/lessons');
 	}
 
 	/**
@@ -53,7 +53,7 @@ class LessonsController extends \BaseController {
 	{
 		$lesson = Lesson::findOrFail($id);
 
-		return View::make('lessons.show', compact('lesson'));
+		return View::make('admin.lessons.show', compact('lesson'));
 	}
 
 	/**
@@ -66,7 +66,7 @@ class LessonsController extends \BaseController {
 	{
 		$lesson = Lesson::find($id);
 
-		return View::make('lessons.edit', compact('lesson'));
+		return View::make('admin.lessons.edit', compact('lesson'));
 	}
 
 	/**
@@ -88,7 +88,7 @@ class LessonsController extends \BaseController {
 
 		$lesson->update($data);
 
-		return Redirect::route('lessons.index');
+		return Redirect::to('admin/lessons');
 	}
 
 	/**
@@ -101,7 +101,7 @@ class LessonsController extends \BaseController {
 	{
 		Lesson::destroy($id);
 
-		return Redirect::route('lessons.index');
+		return Redirect::to('admin/lessons');
 	}
 
 }
