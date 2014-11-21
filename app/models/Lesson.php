@@ -6,12 +6,15 @@ class Lesson extends Eloquent {
 
     protected $collection = 'lessons_collection';
 
-	// Add your validation rules here
+	// Validation rules
 	public static $rules = [
-		// 'title' => 'required'
+		'code' => 'required|unique:lessons_collection,code',
+        'name' => 'required|max:50',
+        'day' => 'required',
+        'hour' => 'required'
 	];
 
-	// Don't forget to fill this array
-	protected $fillable = [];
+	// Fillable
+	protected $fillable = ['code', 'name', 'day', 'hour', 'is_mandatory'];
 
 }

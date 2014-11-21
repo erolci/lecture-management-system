@@ -48,6 +48,35 @@ Route::filter('auth', function()
 	}
 });
 
+Route::filter('auth.admin', function()
+{
+    if (! Auth::admin()->check())
+    {
+        if (Request::ajax())
+        {
+            return Response::make('Unauthorized', 401);
+        }
+        else
+        {
+            return Redirect::guest('login');
+        }
+    }
+});
+
+Route::filter('auth.student', function()
+{
+    if (! Auth::student()->check())
+    {
+        if (Request::ajax())
+        {
+            return Response::make('Unauthorized', 401);
+        }
+        else
+        {
+            return Redirect::guest('login');
+        }
+    }
+});
 
 Route::filter('auth.basic', function()
 {

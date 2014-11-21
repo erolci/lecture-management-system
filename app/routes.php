@@ -11,6 +11,7 @@
 |
 */
 
+// login check
 Route::get('/', function() {
 
     if ( Auth::admin()->check() || Auth::student()->check() )
@@ -41,10 +42,29 @@ Route::group(['prefix' => 'admin', 'before' => 'auth.admin'], function()
 
     // lessons resource
     Route::resource('lessons', 'LessonsController');
+
+    // student resource
+    Route::resource('students', 'StudentsController');
+
+    // faculty member resource
+    Route::resource('faculty_members', 'FacultyMembersController');
+
+    // classroom resource
+    Route::resource('classrooms', 'ClassroomsController');
 });
 
 // student group
 Route::group(['prefix' => 'student', 'before' => 'auth.student'], function()
 {
+    // index
+    Route::get('/', function() {
 
+        return Redirect::to('student/lessons');
+    });
+
+    // lessons
+    Route::get('lessons', 'StudentController@lessons');
+    Route::get('lessons/create', 'StudentController@createLesson');
+    Route::post('lessons', 'StudentController@storeLesson');
+    Route::delete('lessons/{id}', 'StudentController@destroyLesson');
 });
