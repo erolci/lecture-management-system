@@ -3,7 +3,7 @@
 <head>
 
   <meta charset="utf-8">
-  <title>LMS - Lessons</title>
+  <title>LMS - Classrooms</title>
 
   @include('includes.head')
 
@@ -24,7 +24,7 @@
 
             <div class="col-md-3">
 
-                @include('includes.admin.sidebarMenu', ['sm' => 'lessons'])
+                @include('includes.admin.sidebarMenu', ['sm' => 'classrooms'])
 
             </div>
 
@@ -35,7 +35,7 @@
                 @include('includes.successMessages')
 
                 <div class="pull-right">
-                    <a href="/admin/lessons/create" class="btn btn-success">+ Add New Lesson</a>
+                    <a href="/admin/classrooms/create" class="btn btn-success">+ Add Classroom/Floor</a>
                     <div class="clearfix" style="height: 10px;"></div>
                 </div>
 
@@ -43,29 +43,27 @@
                     <thead>
                         <tr>
                             <th>Code</th>
+                            <th>Floor Code</th>
                             <th>Name</th>
-                            <th>Mandatory</th>
-                            <th>Day</th>
-                            <th>Hour</th>
+                            <th>Type</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @if ($lessons->count() > 0)
-                            @foreach ($lessons as $lesson)
+                        @if ($classrooms->count() > 0)
+                            @foreach ($classrooms as $classroom)
                                 <tr>
-                                    <td>{{$lesson->code}}</td>
-                                    <td>{{$lesson->name}}</td>
-                                    <td>{{$lesson->is_mandatory == 1 ? 'Yes' : 'No'}}</td>
-                                    <td>{{trans('global.days.' . $lesson->day)}}</td>
-                                    <td>{{$lesson->hour}}</td>
+                                    <td>{{$classroom->code}}</td>
+                                    <td>{{$classroom->type == 0 ? '' : $classroom->parent_code}}</td>
+                                    <td>{{$classroom->name}}</td>
+                                    <td>{{$classroom->type == 0 ? 'Floor' : 'Classroom'}}</td>
                                     <td>
-                                        <a href="/admin/lessons/{{$lesson->_id}}" data-method="DELETE" class="rest btn btn-danger">Delete</a>
+                                        <a href="/admin/classrooms/{{$classroom->_id}}" data-method="DELETE" class="rest btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
                         @else
-                            <tr><td colspan="6">Lesson is not found</td></tr>
+                            <tr><td colspan="6">Classroom is not found</td></tr>
                         @endif
                     </tbody>
                 </table>

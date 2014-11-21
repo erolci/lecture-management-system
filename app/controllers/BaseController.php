@@ -2,6 +2,12 @@
 
 class BaseController extends Controller {
 
+	public function __construct()
+	{
+		// global view variables
+		View::share( '_successMessages', Session::get('_successMessages') );
+	}
+
 	/**
 	 * Setup the layout used by the controller.
 	 *
@@ -14,5 +20,4 @@ class BaseController extends Controller {
 			$this->layout = View::make($this->layout);
 		}
 	}
-
 }

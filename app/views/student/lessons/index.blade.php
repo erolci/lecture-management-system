@@ -22,50 +22,52 @@
 
         <div class="row">
 
-            <div class="col-md-3">
-
-                @include('includes.admin.sidebarMenu', ['sm' => 'lessons'])
-
-            </div>
-
             <!-- content -->
-            <div class="col-md-9">
+            <div class="col-md-12">
 
                 {{-- Success Messages --}}
                 @include('includes.successMessages')
 
+                <div class="pull-left">
+                    <h5>Selected Lessons</h5>
+                </div>
+
                 <div class="pull-right">
-                    <a href="/admin/lessons/create" class="btn btn-success">+ Add New Lesson</a>
+                    <a href="/student/lessons/create" class="btn btn-success">+ Add New Lesson</a>
                     <div class="clearfix" style="height: 10px;"></div>
                 </div>
 
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Code</th>
+                            <th>Lesson Code</th>
                             <th>Name</th>
                             <th>Mandatory</th>
                             <th>Day</th>
                             <th>Hour</th>
+                            <th>Classroom</th>
+                            <th>Faculty Member</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @if ($lessons->count() > 0)
-                            @foreach ($lessons as $lesson)
+                        @if ($selectedLessons->count() > 0)
+                            @foreach ($selectedLessons as $selectedLesson)
                                 <tr>
-                                    <td>{{$lesson->code}}</td>
-                                    <td>{{$lesson->name}}</td>
-                                    <td>{{$lesson->is_mandatory == 1 ? 'Yes' : 'No'}}</td>
-                                    <td>{{trans('global.days.' . $lesson->day)}}</td>
-                                    <td>{{$lesson->hour}}</td>
+                                    <td>{{ $selectedLesson->lesson->code }}</td>
+                                    <td>{{ $selectedLesson->lesson->name }}</td>
+                                    <td>{{ $selectedLesson->lesson->is_mandatory == 1 ? 'Yes' : 'No' }}</td>
+                                    <td>{{ trans('global.days.' . $selectedLesson->lesson->day) }}</td>
+                                    <td>{{ $selectedLesson->lesson->hour }}</td>
+                                    <td>{{ $selectedLesson->classroom->name }}</td>
+                                    <td>{{ $selectedLesson->facultyMember->name }} {{ $selectedLesson->facultyMember->surname }}</td>
                                     <td>
-                                        <a href="/admin/lessons/{{$lesson->_id}}" data-method="DELETE" class="rest btn btn-danger">Delete</a>
+                                        <a href="/student/lessons/{{$selectedLesson->id}}" data-method="DELETE" class="rest btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
                         @else
-                            <tr><td colspan="6">Lesson is not found</td></tr>
+                            <tr><td colspan="8">Selected lesson is not found</td></tr>
                         @endif
                     </tbody>
                 </table>

@@ -3,7 +3,7 @@
 <head>
 
   <meta charset="utf-8">
-  <title>LMS - Lessons</title>
+  <title>LMS - Students</title>
 
   @include('includes.head')
 
@@ -24,7 +24,7 @@
 
             <div class="col-md-3">
 
-                @include('includes.admin.sidebarMenu', ['sm' => 'lessons'])
+                @include('includes.admin.sidebarMenu', ['sm' => 'students'])
 
             </div>
 
@@ -35,37 +35,33 @@
                 @include('includes.successMessages')
 
                 <div class="pull-right">
-                    <a href="/admin/lessons/create" class="btn btn-success">+ Add New Lesson</a>
+                    <a href="/admin/students/create" class="btn btn-success">+ Add New Student</a>
                     <div class="clearfix" style="height: 10px;"></div>
                 </div>
 
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Code</th>
+                            <th>Student Number</th>
                             <th>Name</th>
-                            <th>Mandatory</th>
-                            <th>Day</th>
-                            <th>Hour</th>
+                            <th>Surname</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @if ($lessons->count() > 0)
-                            @foreach ($lessons as $lesson)
+                        @if ($students->count() > 0)
+                            @foreach ($students as $student)
                                 <tr>
-                                    <td>{{$lesson->code}}</td>
-                                    <td>{{$lesson->name}}</td>
-                                    <td>{{$lesson->is_mandatory == 1 ? 'Yes' : 'No'}}</td>
-                                    <td>{{trans('global.days.' . $lesson->day)}}</td>
-                                    <td>{{$lesson->hour}}</td>
+                                    <td>{{$student->code}}</td>
+                                    <td>{{$student->name}}</td>
+                                    <td>{{$student->surname}}</td>
                                     <td>
-                                        <a href="/admin/lessons/{{$lesson->_id}}" data-method="DELETE" class="rest btn btn-danger">Delete</a>
+                                        <a href="/admin/students/{{$student->_id}}" data-method="DELETE" class="rest btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
                         @else
-                            <tr><td colspan="6">Lesson is not found</td></tr>
+                            <tr><td colspan="6">Student is not found</td></tr>
                         @endif
                     </tbody>
                 </table>

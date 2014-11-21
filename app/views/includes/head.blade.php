@@ -8,3 +8,6 @@
   <script src="{{ asset('bower_components/html5shiv/dist/html5shiv.min.js') }}"></script>
   <script src="{{ asset('bower_components/respond/dest/respond.min.js') }}"></script>
 <![endif]-->
+
+{{-- jQuery --}}
+<script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>

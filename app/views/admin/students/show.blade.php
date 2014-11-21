@@ -1,0 +1,1 @@
+/home/vagrant/Code/lecture-management-system/app/views/students/show.blade.php
